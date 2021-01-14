@@ -59,8 +59,12 @@ def output_files():
                 #process when command came in a certain time from image came
                 if t.to_sec() - img_time < INFERENCE_TIME + TRANSMIT_MARGIN :
                     #for analog pad
-                    cmd = str(int(msg.angular.z*((DISCRETIZATION-1)/2)+((DISCRETIZATION-1)/2)))
-                    csv_out.append([str(num), image_path,cmd])
+                    cmd = int(msg.angular.z*((DISCRETIZATION-1)/2)+((DISCRETIZATION-1)/2))
+                    if cmd >= DISCRETIZATION:
+                        cmd = DISCRETIZATION-1
+                    if cmd < 0:
+                        cmd = 0
+                    csv_out.append([str(num), image_path, str(cmd)])
                     num = num +1
             prev = "cmd"
     with open(outputcsv, 'w') as f:
