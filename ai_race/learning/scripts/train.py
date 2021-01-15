@@ -36,7 +36,7 @@ def main():
 	np.random.seed(seed=0)
 	image_dataframe = pd.read_csv(args.data_csv, engine='python', header=None)
 	image_dataframe = image_dataframe.reindex(np.random.permutation(image_dataframe.index))
-	test_num = int(len(image_dataframe) * 0.2)
+	test_num = int(len(image_dataframe) * 0.3)
 	train_dataframe = image_dataframe[test_num:]
 	test_dataframe = image_dataframe[:test_num]
 	train_data = MyDataset(train_dataframe, transform=transforms.ToTensor())
