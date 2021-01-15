@@ -25,7 +25,7 @@ class CmdManager:
         return self.cmd_to_enum(resample)
 
     def enum_to_cmd(self, enum):
-        return float(float(enum-1)-((self.discretization-1)/2))/((self.discretization-1)/2)
+        return float(float(enum)-((self.discretization-1)/2))/((self.discretization-1)/2)
         # return self.cmd_list[enum]
 
 
